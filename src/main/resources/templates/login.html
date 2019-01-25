@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Proyecto Redes Neuronales</title>
+    
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css'>
+
+    <link rel="stylesheet" href="css/style.css">
+
+
+</head>
+
+<body>
+
+
+    <div class="wrapper animated bounce">
+        <h1>Sistema de Gestión de Reclamos</h1>
+        <hr>
+        <form th:action="@{/logincheck}" method="POST">
+            <label id="icon" for="username">
+                <i class="fa fa-user"></i>
+            </label>
+            <input type="text" placeholder="Username" name="username" id="username">
+            <label id="icon" for="password">
+                <i class="fa fa-key"></i>
+            </label>
+            <input type="password" placeholder="Password" id="password" name="password">
+            <div th:if="${error != null}" class="alert alert-danger" role="alert">Usuario o contraseña no válidos</div>
+        	<div th:if="${logout != null}" class="alert alert-info" role="alert">Se ha cerrado sesión!</div>
+            <input type="submit" value="Sign In">
+            <hr>
+<!--             <div class="crtacc"> -->
+<!--                 <a href="#">Create Account</a> -->
+<!--             </div> -->
+        </form>
+    </div>
+
+
+
+    <script src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>

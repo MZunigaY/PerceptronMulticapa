@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Proyecto Redes Neuronales</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css" />
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script> -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+
+
+    <link href="#" th:href="@{/css/nstyle.css}" rel="stylesheet" />
+</head>
+<body>
+
+	<div class="jumbotron">
+		<div class="container"style="width: 80%;height: 80%">
+			<h1>Prueba</h1>
+			<br/>
+			<form action="#" th:action="@{/addinput}" th:object="${inputModel}" method="post">
+				<input type="hidden" th:field="*{id}"></input>
+				Tipo de recurso: 
+				<select th:field="*{tipoRecurso}" class="form-control" style="width:80%" >
+					<option value="0">Queja</option>
+					<option value="1">Apelación</option>
+				</select>
+				<br/>
+				
+				Fecha de ingreso:
+		       	<div class='input-group date' id='datetimepicker1' style="width:25%">
+		        	<input type='text' class="form-control" th:field="*{fechaIngreso}"  />
+		            <span class="input-group-addon">
+		            	<span class="glyphicon glyphicon-calendar"></span>
+		            </span>
+		        </div>
+				<br/>
+				Fecha de resolución: 
+				<div class='input-group date' id='datetimepicker2' style="width:25%">
+                    <input type='text' class="form-control" th:field="*{fechaResolucion}"  />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+				<br/>
+				Empresa: 
+				<select th:field="*{empresa}" class="form-control" style="width:80%" >
+					<option value="1">TELEFÓNICA DEL PERÚ S.A.A</option>
+					<option value="2">SUPER CANAL S.A.C.</option>
+					<option value="3">NETLINE PERÚ SOCIEDAD ANÓNIMA</option>
+					<option value="4">AMERICA MOVIL PERU S.A.C.</option>
+					<option value="5">EMPRESA DE TELECOMUNICACIONES MULTIMEDIA ALFA E.I.R.L.</option>
+					<option value="6">ANTENAS CABLE VISIÓN SATELITE S.A.C. - CABLE VISIÓN PERÚ</option>
+					<option value="7">CENTURYLINK PERÚ S.A. (antes LEVEL 3 PERU S.A.)</option>
+					<option value="8">CABLE MUNDO S.A.C.</option>
+					<option value="9">TELEFÓNICA MULTIMEDIA S.A.C.</option>
+					<option value="10">VIA SATELITAL E.I.R.L.</option>
+					<option value="11">AMERICA MOVIL PERU S.A.C. (TIM)</option>
+					<option value="12">DIRECTV PERU S.R.L</option>
+					<option value="13">CABLEMASS S.R.L.</option>
+					<option value="14">ENTEL PERÚ S.A. (antes NEXTEL DEL PERÚ S.A.)</option>
+					<option value="15">CABLE MAS S.A.C.</option>
+					<option value="16">OLO DEL PERU S.A.C.</option>
+					<option value="17">INCACEL MOVIL S.A. (antes Virgin Mobile Perú S.A.)</option>
+					<option value="18">AMERICATEL PERÚ S.A.C</option>
+				</select>
+				<br/>
+				Distrito: 
+				<select th:field="*{distrito}" class="form-control" style="width:80%" >
+					<option value="1">LIMA</option>
+					<option value="2">ANCON</option>
+					<option value="3">ATE</option>
+					<option value="4">BARRANCO</option>
+					<option value="5">BREÑA</option>
+					<option value="6">CARABAYLLO</option>
+					<option value="7">CHACLACAYO</option>
+					<option value="8">CHORRILLOS</option>
+					<option value="9">CIENEGUILLA</option>
+					<option value="10">COMAS</option>
+					<option value="11">EL AGUSTINO</option>
+					<option value="12">INDEPENDENCIA</option>
+					<option value="13">JESUS MARIA</option>
+					<option value="14">LA MOLINA</option>
+					<option value="15">LA VICTORIA</option>
+					<option value="16">LINCE</option>
+					<option value="17">LOS OLIVOS</option>
+					<option value="18">CHOSICA</option>
+					<option value="19">LURIN</option>
+					<option value="20">MAGDALENA DEL MAR</option>
+					<option value="21">PUEBLO LIBRE</option>
+					<option value="22">MIRAFLORES</option>
+					<option value="23">PACHACAMAC</option>
+					<option value="24">PUCUSANA</option>
+					<option value="25">PUENTE PIEDRA</option>
+					<option value="26">PUNTA HERMOSA</option>
+					<option value="27">PUNTA NEGRA</option>
+					<option value="28">RIMAC</option>
+					<option value="29">SAN BARTOLO</option>
+					<option value="30">SAN BORJA</option>
+					<option value="31">SAN ISIDRO</option>
+					<option value="32">SAN JUAN DE LURIGANCHO</option>
+					<option value="33">SAN JUAN DE MIRAFLORES</option>
+					<option value="34">SAN LUIS</option>
+					<option value="35">SAN MARTIN DE PORRES</option>
+					<option value="36">SAN MIGUEL</option>
+					<option value="37">SANTA ANITA</option>
+					<option value="38">SANTA MARIA DEL MAR</option>
+					<option value="39">SANTA ROSA</option>
+					<option value="40">SANTIAGO DE SURCO</option>
+					<option value="41">SURQUILLO</option>
+					<option value="42">VILLA EL SALVADOR</option>
+					<option value="43">VILLA MARIA DEL TRIUNFO</option>
+				</select>
+				<br/>
+				Materia: 
+				<select th:field="*{materia}" class="form-control" style="width:80%" >
+					<option value="1">ACTIVACIÓN</option>
+					<option value="2">ASIGNACION DE MINUTOS</option>
+					<option value="3">BAJA</option>
+					<option value="4">BAJA INJUSTIFICADA DEL SERVICIO</option>
+					<option value="5">CALIDAD</option>
+					<option value="6">CAMBIO DE TITULARIDAD</option>
+					<option value="7">CAMBIO DE TITULARIDAD NO SOLICITADA</option>
+					<option value="8">COBRO</option>
+					<option value="9">CONTRATACIÓN NO SOLICITADA</option>
+					<option value="10">CORTE</option>
+					<option value="11">CUALQUIER MATERIA RELACIONADA DIRECTAMENTE CON LA PRESTACIÓN DEL SERV. PUB. DE TELECOM. CONTRATADO</option>
+					<option value="12">DESBLOQUEO DE EQUIPO</option>
+					<option value="13">DESCONOCIMIENTO DE CONTRATACIÓN</option>
+					<option value="14">DESCUENTO DE SALDO</option>
+					<option value="15">FACTURACIÓN</option>
+					<option value="16">FALTA DE ENTREGA DE LA FACTURACIÓN DETALLADA</option>
+					<option value="17">FALTA DE ENTREGA DEL RECIBO O DE LA COPIA</option>
+					<option value="18">INCUMPL. DE RES. DEL TRIB.</option>
+					<option value="19">INCUMPLIMIENTO DE CONDICIONES CONTRACTUALES</option>
+					<option value="20">INCUMPLIMIENTO DE DERECHOS RECONOCIDOS EN LA NORMATIVA DE USUARIOS DE SERV. PUB. DE TELECOM.</option>
+					<option value="21">INCUMPLIMIENTO DE OFERTAS Y PROMOCIONES VINCULADAS A LA PRESTACIÓN DEL SERVICIO PÚBLICO DE TELECOM</option>
+					<option value="22">INCUMPLIMIENTO DE RES. DE EO</option>
+					<option value="23">INDEMNIZACIÓN</option>
+					<option value="24">INFRACCIÓN DE PLAZOS</option>
+					<option value="25">INSTALACIÓN</option>
+					<option value="26">MATERIA NO RECLAMABLE</option>
+					<option value="27">MIGRACIÓN</option>
+					<option value="28">NEGATIVA A CONTRATAR</option>
+					<option value="29">NO ATENCIÓN DE SOLICITUD DE COPIAS</option>
+					<option value="30">NO PERMITE PAGO A CUENTA</option>
+					<option value="31">NO PERMITIR ACCESO AL EXPEDIENTE</option>
+					<option value="32">NO PERMITIR LA PRESENTACIÓN DE UN RECLAMO</option>
+					<option value="33">NO PERMITIR LA PRESENTACIÓN DE UN RECURSO O QUEJA</option>
+					<option value="34">NO PERMITIR LA PRESENTACIÓN DE UN REPORTE</option>
+					<option value="35">NO REACTIVACIÓN ANTE RECLAMO, RECONSIDERACIÓN, RA O RQJ</option>
+					<option value="36">OTRAS TRANSGRESIONES DEL PROCEDIMIENTO</option>
+					<option value="37">OTROS</option>
+					<option value="38">OTROS QUE SEÑALE EL CONSEJO DIRECTIVO</option>
+					<option value="39">PORTABILIDAD</option>
+					<option value="40">RECARGA NO PROCESADA</option>
+					<option value="41">REQUERIMIENTO DE PAGO CON RECLAMO EN TRÁMITE</option>
+					<option value="42">SOLICITUD DE BAJA DE SERVICIO NO ATENDIDA</option>
+					<option value="43">SUSPENSIÓN</option>
+					<option value="44">SUSPENSIÓN DEL SERVICIO CON RECLAMO EN TRÁMITE</option>
+					<option value="45">TARIFAS</option>
+					<option value="46">TARJETAS DE PAGO FÍSICAS O VIRTUALES</option>
+					<option value="47">TARJETAS PRE-PAGO</option>
+				</select>
+				<br/>
+				Submateria: 
+				<select th:field="*{submateria}" class="form-control" style="width:80%" >
+					<option value="1">NO APLICA</option>
+					<option value="2">INCUMPLIMIENTO DE ACTIVACIÓN</option>
+					<option value="3">NO HABILITACIÓN Y RECARGA</option>
+					<option value="4">NO CUMPLE EL PROCEDIMIENTO DE BAJA</option>
+					<option value="5">AVERIA DE SERVICIO SUPLEMENTARIO</option>
+					<option value="6">AVERIA DEL SERVICIO</option>
+					<option value="7">VELOCIDAD</option>
+					<option value="8">FALTA DE RESPUESTA AL RECLAMO</option>
+					<option value="9">CAMBIO DE TITULARIDAD</option>
+					<option value="10">BAJA NO ATENDIDA</option>
+					<option value="11">COBRO DEL SERVICIO</option>
+					<option value="12">PAGO NO PROCESADO</option>
+					<option value="13">DESCONOCIMIENTO DE CONTRATACIÓN</option>
+					<option value="14">PROCEDIMIENTO DE BAJA</option>
+					<option value="15">POR CONSUMOS NO REALIZADOS</option>
+					<option value="16">POR AFILIACIÓN INDEBIDA</option>
+					<option value="17">CONSUMO ADICIONAL</option>
+					<option value="18">CARGO FIJO</option>
+					<option value="19">CARGO POR REACTIVACIÓN</option>
+					<option value="20">SERVICIO DE VALOR AGREGADO</option>
+					<option value="21">CARGO FIJO PROPORCIONAL</option>
+					<option value="22">CUOTA DE EQUIPO</option>
+					<option value="23">RENTA MENSUAL</option>
+					<option value="24">CONSUMO ADICIONAL POR DATOS</option>
+					<option value="25">SERVICIO SUPLEMENTARIO</option>
+					<option value="26">SERVICIOS SUPLEMENTARIOS</option>
+					<option value="27">CUOTA DE FINANCIAMIENTO</option>
+					<option value="28">I.G.V</option>
+					<option value="29">CONSUMO ADICIONAL POR LLAMADAS</option>
+					<option value="30">SALDO POR REDONDEO</option>
+					<option value="31">CONSUMO ADICIONAL POR MENSAJES DE TEXTO</option>
+					<option value="32">ROAMING INTERNACIONAL (LLAMADAS)</option>
+					<option value="33">CARGO POR INSTALACIÓN</option>
+					<option value="34">BOLSA DE CONSUMO VOZ, MENSAJES O DATOS</option>
+					<option value="35">PENALIDAD</option>
+					<option value="36">CONSUMO ADICIONAL POR LLAMADAS PREMIUM</option>
+					<option value="37">ROAMING INTERNACIONAL (DATOS)</option>
+					<option value="38">RENTA MENSUAL POR AVERIAS</option>
+					<option value="39">CONSUMO ADICIONAL POR MENSAJES PREMIUM</option>
+					<option value="40">CUOTA DE EQUIPO MÓDEM</option>
+					<option value="41">LLAMADAS A TELEFONÍA MÓVIL</option>
+					<option value="42">INTERÉS O MORA</option>
+					<option value="43">PAQUETE DE CANALES</option>
+					<option value="44">CARGO POR SERVICIOS SUPLEMENTARIOS</option>
+					<option value="45">INTERÉS POR FINANCIAMIENTO</option>
+					<option value="46">RENTA FRACCIONARIA</option>
+					<option value="47">CUOTA DE EQUIPO (OTROS ESPECIFICAR)</option>
+					<option value="48">DESCUENTO INDEBIDO DE SALDO</option>
+					<option value="49">RENTA MENSUAL POR SUSPENSION</option>
+					<option value="50">PAQUETE DE MINUTOS</option>
+					<option value="51">CARGO POR REINTEGRO Y/O RECUPERO DE EQUIPO</option>
+					<option value="52">RENTA MENSUAL POR ASIGNACION DE MINUTOS</option>
+					<option value="53">CARGO POR MANTENIMIENTO</option>
+					<option value="54">LLAMADA POR LLAMADA</option>
+					<option value="55">ROAMING INTERNACIONAL (SMS)</option>
+					<option value="56">CARGO DE RENTA FRACCIONARIA</option>
+					<option value="57">CUOTA DE EQUIPO CELULAR</option>
+					<option value="58">CONSUMO ADICIONAL POR LLAMADAS A RURALES</option>
+					<option value="59">CARGO POR PENALIDAD</option>
+					<option value="60">PRESELECCIÓN</option>
+					<option value="61">COBRO REVERTIDO</option>
+					<option value="62">LLAMADAS A RURALES</option>
+					<option value="63">SERVICIO LOCAL MEDIDO</option>
+					<option value="64">CUOTA DE EQUIPO TERMINAL</option>
+					<option value="65">CUOTA DE EQUIPO USB MODEM</option>
+					<option value="66">PLAN DE LARGA DISTANCIA - RENTA MENSUAL</option>
+					<option value="67">LLAMADAS A EMPRESAS DE VALOR AÑADIDO</option>
+					<option value="68">RECAUDACIÓN (HOJA DE LIQUIDACIÓN)</option>
+					<option value="69">TARJETAS PRE-PAGO</option>
+					<option value="70">VIA OPERADORA</option>
+					<option value="71">SERVICIO LOCAL COMPARTIDO</option>
+					<option value="72">RENTA MENSUAL POR CONDICIONES DE PLAN TARIFARIO</option>
+					<option value="73">RECUPERO</option>
+					<option value="74">RENTA MENSUAL POR CONSUMO</option>
+					<option value="75">LLAMADAS A INTERNET</option>
+					<option value="76">SUSPENSIÓN DEL SERVICIO CON RECLAMO EN TRÁMITE</option>
+					<option value="77">PLAN DE LARGA DISTANCIA - RENTA FRACCIONARIA</option>
+					<option value="78">LLAMADAS SALIENTES</option>
+					<option value="79">LLAMADAS ENTRANTES</option>
+					<option value="80">CONSUMOS SALIENTES</option>
+					<option value="81">MODIFICACIÓN TARIFARIA</option>
+					<option value="82">NO ELEVACIÓN OPORTUNA DE LA APELACIÓN</option>
+					<option value="83">FALTA DE RESPUESTA A LA APELACIÓN</option>
+					<option value="84">FALTA DE RESPUESTA A LA QUEJA</option>
+					<option value="85">NO ELEVACIÓN OPORTUNA DE LA QUEJA</option>
+					<option value="86">FALTA DE RESPUESTA AL RECURSO DE RECONSIDERACIÓN</option>
+					<option value="87">FALTA DE RESPUESTA AL REPORTE</option>
+					<option value="88">INCUMPLIMIENTO DE INSTALACIÓN</option>
+					<option value="89">INDEMNIZACION</option>
+					<option value="90">OTROS</option>
+					<option value="91">CALIDAD DEL EQUIPO</option>
+					<option value="92">MALA ATENCION</option>
+					<option value="93">INFORMACION INCORRECTA OTORGADA POR LA EO</option>
+					<option value="94">GARANTIA</option>
+					<option value="95">ABUSO DE AUTORIDAD Y PREVARICATO</option>
+					<option value="96">NO EFECTUAR LA MIGRACIÓN</option>
+					<option value="97">MIGRACION NO AUTORIZADA</option>
+					<option value="98">NEGATIVA A ACEPTAR MIGRACIÓN</option>
+					<option value="99">FALTA DE COMUNICACIÓN DE LA SOLICITUD DE ACEPTACIÓN</option>
+					<option value="100">NO ES MATERIA DE QUEJA SINO RECLAMO</option>
+					<option value="101">REITERACIÓN DEL RECLAMO</option>
+					<option value="102">SOLICITUD DE BAJA DE SERVICIO NO ATENDIDA</option>
+					<option value="103">FALTA DE CONSENTIMIENTO DEL ABONADO</option>
+					<option value="104">OBLIGACIONES PENDIENTES DE PAGO</option>
+					<option value="105">RECHAZO DE LA SOLICITUD DE PORTABILIDAD</option>
+					<option value="106">NEGATIVA A ACEPTAR LA SOLICITUD DE PORTABILIDAD</option>
+					<option value="107">REQUERIMIENTO DE PAGO CON RECLAMO EN TRÁMITE</option>
+					<option value="108">SUSPENSIÓN POR FALTA DE PAGO</option>
+					<option value="109">SUSPENSIÓN POR USO INDEBIDO</option>
+					<option value="110">SUSPENSIÓN POR USO PROHIBIDO</option>
+					<option value="111">DESCUENTO INDEBIDO DE MINUTOS</option>
+					<option value="112">INCUMPLIMIENTO DE TRASLADO</option>
+					<option value="113">IMPOSIBILIDAD DE EFECTUAR EL TRASLADO</option>
+					<option value="114">TRASLADO PENDIENTE</option>
+				</select>
+				<br/>
+				Servicio: 
+				<select th:field="*{servicio}" class="form-control" style="width:80%" >
+					<option value="1">TELEFONÍA MÓVIL POST-PAGO</option>
+					<option value="2">TELEFONÍA FIJA</option>
+					<option value="3">TELEFONÍA MÓVIL PRE-PAGO</option>
+					<option value="4">INTERNET DE ACCESO FIJO</option>
+					<option value="5">LARGA DISTANCIA INTERNACIONAL MÓVIL PRE-PAGO</option>
+					<option value="6">INTERNET DE ACCESO MÓVIL POST-PAGO</option>
+					<option value="7">TELEVISIÓN DE PAGA</option>
+					<option value="8">INTERNET DE ACCESO MÓVIL PRE-PAGO</option>
+					<option value="9">ARRENDAMIENTO DE CIRCUITOS</option>
+					<option value="10">LARGA DISTANCIA INTERNACIONAL FIJA</option>
+					<option value="11">LARGA DISTANCIA INTERNACIONAL MÓVIL POST-PAGO</option>
+					<option value="12">LARGA DISTANCIA NACIONAL</option>
+					<option value="13">TELÉFONOS PÚBLICOS</option>
+				</select>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<button class="btn btn-lg btn-primary btn-block" type="submit">
+					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Aceptar
+				</button>
+			</form>
+			<a href="#" th:href="@{/cancel}">
+				<button class="btn btn-lg btn-danger btn-block" type="submit">
+					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancelar
+				</button>
+			</a>
+		</div>
+	</div>
+		<script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker({
+                    format: 'DD/MM/YYYY',
+                    locale: 'es'
+                });
+                $('#datetimepicker2').datetimepicker({
+                    format: 'DD/MM/YYYY',
+                    locale: 'es'
+                });
+            });
+        </script>
+</body>
+
+</html>

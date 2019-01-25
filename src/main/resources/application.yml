@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@//localhost:1521/pdborcl
+    username: redes_neuronales
+    password: redes_neuronales
+    driver-class-name: org.hibernate.cfg.ImprovedNamingStrategy
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.Oracle12cDialect
+        
+#training:
+#  dataset:
+#    path: 'C:/Users/ASUS/Documents/wk_REDES_NEURONALES/SGRE/src/main/resources/static/data/dataset_5clases.arff'
+#  model:
+#    path: C:/Users/ASUS/Documents/wk_REDES_NEURONALES/SGRE/src/main/resources/static/data/model_sgre.bin

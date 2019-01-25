@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8"/>
+
+    <title>Proyecto Redes Neuronales</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"/>
+
+    <!-- Custom styles for this template -->
+    <link href="#" th:href="@{/css/nstyle.css}" rel="stylesheet" />
+    
+    <!-- Web Fonts  -->
+		<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
+    
+    
+ 	<!-- Scripts js -->
+ 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-waitingfor/1.2.7/bootstrap-waitingfor.js"></script>
+  	
+ 	<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+ 	<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+ 	
+ 	
+ 	
+ 	
+  </head>
+
+  <body>
+	
+	<div class="container">
+	
+		<h1><span>Bienvenido</span>!</h1>
+		<br/>
+		<div style="text-align:right">
+			<button id="btnEntrenar" type="button" class="buttonTraining buttonTraining1" >Entrenar</button>
+		</div>
+		<br/>
+		<br/>
+		<div class="modal fade" id="myModal" role="dialog">
+		    <div class="modal-dialog">
+		      <div class="modal-content">
+		        <div class="modal-header">
+		          <button type="button" class="close" data-dismiss="modal">&times;</button>
+		          <h4 class="modal-title">Training</h4>
+		        </div>
+		        <div class="modal-body" id="msgEntrenamiento">
+		        </div>
+		        <div class="modal-footer" style="text-align:center">
+			        <button class="btn btn-info btn-lg" data-dismiss="modal">
+			          <span class="glyphicon glyphicon-ok"></span> Ok 
+			        </button>
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+		<hr>
+		<br/>
+		<br/>
+		<div class="panel panel-default">
+			<div class="panel-heading"></div>
+			<table id="example" class="table table-striped table-bordered">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Tipo de Recurso</th>
+						<th>Fec. Ingreso</th>
+						<th>Fec. Resolucion</th>
+						<th>Empresa</th>
+						<th>Distrito</th>
+						<th>Materia</th>
+						<th>Submateria</th>
+						<th>Servicio</th>
+						<th>Sentido</th>
+<!-- 						<th>Esperado</th> -->
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="prueba : ${pruebas}">
+						<td th:text="${prueba.id}"></td>
+						<td th:text="${prueba.tipoRecurso}"></td>
+						<td th:text="${prueba.fechaIngreso}"></td>
+						<td th:text="${prueba.fechaResolucion}"></td>
+						<td th:text="${prueba.empresa}"></td>
+						<td th:text="${prueba.distrito}"></td>
+						<td th:text="${prueba.materia}"></td>
+						<td th:text="${prueba.submateria}"></td>
+						<td th:text="${prueba.servicio}"></td>
+						<td th:text="${prueba.sentido.valor}"></td>
+<!-- 						<td th:text="${prueba.resultadoEsperado.valor}"></td> -->
+<!-- 						<td> -->
+<!-- 							<a href="#" th:href="@{/contacts/contactform?id=__${contact.id}__}"> -->
+<!-- 								<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button> -->
+<!-- 							</a> -->
+<!-- 							<a href="#" th:href="@{/contacts/removecontact?id=__${contact.id}__}"> -->
+<!-- 								<button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button> -->
+<!-- 							</a> -->
+<!-- 						</td> -->
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+		<div th:if="${result == 1}" class="alert alert-success" role="alert">Se agregó correctamente!</div>
+		<div th:if="${result == 0}" class="alert alert-danger" role="alert">Error al agregar prueba</div>
+		
+		<a href="#" th:href="@{/form?id=0}">
+			<button class="btn btn-lg btn-primary btn-block" type="submit"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Agregar input</button>
+		</a>
+		
+		<form th:action="@{/logout}" method="POST">
+			<button class="btn btn-lg btn-danger btn-block" type="submit"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Salir</button>
+		</form>
+		
+<!-- 		<a href="#" th:href="@{/rest/checkrest}">Rest Request!</a> -->
+		
+		<hr>
+
+		</div>
+
+
+	<script>
+		$(document).ready(function() {
+			$('#myModal').modal('hide');
+			$('#example').DataTable();
+			
+		    $('#btnEntrenar').click(function() {
+				waitingDialog.show('Cargando');
+		    	$.ajax({
+		    	    url: 'entrenamiento',
+		    	    type:'POST',
+		    	    cache: false,
+		    	    success: function(response){
+		    	    	html = '<p> Se realizó el entrenamiento con <kbd>'+response+' %</kbd> de instancias clasificadas correctamente';
+		    	    	$('#msgEntrenamiento').append(html);
+		    	 },
+		    	 complete: function(){
+		    		 waitingDialog.hide();
+		    		 $('#myModal').modal('show');
+		    	 }
+		    	});
+		    })
+		    
+		} );
+	</script>
+
+</body>
+</html>
